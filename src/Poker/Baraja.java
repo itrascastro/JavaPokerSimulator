@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Baraja {
 
     private ArrayList<Carta> cartas;
-    private int index;
 
     public Baraja() {
         int cnt = 0;
@@ -22,7 +21,6 @@ public class Baraja {
                 cnt++;
             }
         }
-        this.index = 0;
     }
 
     public void barajar() {
@@ -38,17 +36,17 @@ public class Baraja {
         ArrayList<Carta> cartas = new ArrayList<Carta>();
 
         for (int i = 0; i < num; i++) {
-            cartas.add(this.cartas.get(this.index));
-            this.index++;
+            cartas.add(this.cartas.get(0));
+            this.cartas.remove(0);
         }
         return cartas;
     }
 
     public String toString() {
         String cadena = "Baraja[";
-        int cnt = this.index;
+        int cnt = 0;
         
-        for (int i=this.index; i<52; i++) {
+        for (Carta c : this.cartas) {
             cadena += this.cartas.get(cnt).toString();
             if (cnt < 51) {
                 cadena += ", ";
@@ -58,13 +56,4 @@ public class Baraja {
         cadena += "]";
         return cadena;
     }
-
-    public int getIndex() {
-        return this.index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
 }
