@@ -1,5 +1,12 @@
 package Poker;
 
+import java.util.Collections;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author ismael trascastro
+ */
 public class Jugador {
 
     private int id;
@@ -28,8 +35,8 @@ public class Jugador {
         return this.manosGanadas;
     }
 
-    public void setManosGanadas(int manosGanadas) {
-        this.manosGanadas = manosGanadas;
+    public void setManosGanadas() {
+        this.manosGanadas++;
     }
 
     public Mano getMano() {
@@ -40,28 +47,39 @@ public class Jugador {
         this.mano = mano;
     }
 
-    public int calcularJugada() {
-        throw new UnsupportedOperationException();
+    public void calcularJugada() {
+        this.puntuacion = this.mano.getValor();
     }
 
     /**
      *
      * @param cartas
      */
-    public void cogerCartas(Carta[] cartas) {
-        throw new UnsupportedOperationException();
+    public void cogerCartas(ArrayList<Carta> cartas) {
+        if (cartas.size() == 5) {
+            this.mano.setCartas(cartas);
+        } else {
+            for (Carta c : cartas) {
+                this.mano.addCarta(c);
+            }
+        }
     }
 
-    public Carta[] descartar() {
-        throw new UnsupportedOperationException();
+    public void descartar() {
+        this.descartadas = this.mano.descartar();
     }
 
     public String toString() {
-        throw new UnsupportedOperationException();
-    }
-
-    public Jugador() {
-        throw new UnsupportedOperationException();
+        String cadena = "Jugador[";
+        
+        cadena += "Id: " + this.id + ", ";
+        cadena += "ManosGanadas: " + this.manosGanadas + ", ";
+        cadena += "Descartadas: " + this.descartadas + ", ";
+        cadena += "Puntuación: " + this.puntuacion + ", ";
+        cadena += this.mano.toString();
+        cadena += "]";
+        
+        return cadena;
     }
 
     public int getDescartadas() {

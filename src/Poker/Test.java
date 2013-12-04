@@ -1,21 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Poker;
 
 /**
  *
- * @author ismael
+ * @author ismael trascastro
  */
 public class Test {
     public static void main(String args[])
     {
+        //Test.testBarajaMano();
+        Test.testPoker();
+    }
+    
+    public static void testPoker()
+    {
+        Poker pk = new Poker();
+        
+        Jugador j = pk.jugar();
+        
+        System.out.println(pk.toString());
+        System.out.println(j.toString());
+    }
+    
+    public static void testBarajaMano() {
         Baraja b;
         
-        Carta[] cartas;
+        Mano cartas = new Mano();
         
         b = new Baraja();
         
@@ -23,12 +32,12 @@ public class Test {
         b.barajar();
         System.out.println(b.toString());
         
-        cartas = b.repartir(3);
+        cartas.setCartas(b.repartir(5));
+        System.out.println(cartas.toString());
         
-        System.out.println(cartas[0].toString());
-        System.out.println(cartas[1].toString());
-        System.out.println(cartas[2].toString());
+        int descartadas = cartas.descartar();
         
+        System.out.println(cartas.toString());
     }
     
 }

@@ -3,6 +3,10 @@ package Poker;
 import java.util.Collections;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author ismael trascastro
+ */
 public class Baraja {
 
     private ArrayList<Carta> cartas;
@@ -30,11 +34,11 @@ public class Baraja {
      * @param num
      * @return cartas
      */
-    public Carta[] repartir(int num) {
-        Carta[] cartas = new Carta[num];
+    public ArrayList<Carta> repartir(int num) {
+        ArrayList<Carta> cartas = new ArrayList<Carta>();
 
         for (int i = 0; i < num; i++) {
-            cartas[i] = this.cartas.get(this.index);
+            cartas.add(this.cartas.get(this.index));
             this.index++;
         }
         return cartas;

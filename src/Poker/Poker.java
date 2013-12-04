@@ -1,8 +1,11 @@
 package Poker;
 
+/**
+ *
+ * @author ismael trascastro
+ */
 public class Poker {
 
-    private Jugador turno;
     private Baraja baraja;
     private Jugador[] jugadores;
     private boolean descartes;
@@ -12,7 +15,6 @@ public class Poker {
         for (int i = 0; i < 4; i++) {
             this.jugadores[i] = new Jugador(i);
         }
-        this.turno = this.jugadores[0];
         this.baraja = new Baraja();
         this.descartes = false;
         
@@ -26,16 +28,9 @@ public class Poker {
         this.descartes();
         this.repartir();
         ganador = this.calcularGanador();
+        ganador.setManosGanadas();
         
         return ganador;
-    }
-
-    public Jugador getTurno() {
-        return this.turno;
-    }
-
-    public void setTurno(Jugador turno) {
-        this.turno = turno;
     }
 
     public Baraja getBaraja() {
@@ -102,7 +97,27 @@ public class Poker {
     }
 
     public String toString() {
-        throw new UnsupportedOperationException();
+        String cadena = "Poker[\n";
+        
+        cadena += this.baraja.toString() + ",\n";
+        cadena += "Jugadores[\n";
+        for (int i=0; i<4; i++) {
+            cadena += this.jugadores[i].toString();
+            if (i!=3) {
+                cadena += ",";
+            }
+            cadena += "\n";
+        }
+        cadena +="]\n";
+        cadena += "Descartes=";
+        if (this.descartes) {
+            cadena += "yes";
+        } else {
+            cadena += "no";
+        }
+        cadena += "\n]";
+        
+        return cadena;
     }
 
     public boolean isDescartes() {
