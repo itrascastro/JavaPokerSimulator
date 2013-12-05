@@ -55,13 +55,9 @@ public class Poker {
 
     private void repartir() {
         int num;
-
+        
         for (int i = 0; i < 4; i++) {
-            if (!this.descartes) {
-                num = 5;
-            } else {
-                num = this.jugadores[i].getDescartadas();
-            }
+            num = this.jugadores[i].getDescartadas();
             this.jugadores[i].cogerCartas(baraja.repartir(num));
         }
     }

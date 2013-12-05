@@ -64,7 +64,16 @@ public class Mano {
     public void removeCarta(Carta carta) {
         this.cartas.remove(carta);
     }
-
+    
+    //La suma máxima de 5 cartas no iguales es 7173
+    //basándonos en el método valor de Carta
+    //por lo que el valor de una pareja debe ser mayor
+    //ponemos cantidades redondas
+    //pareja = 60000
+    //doblePareja = 70000
+    //trio = 80000
+    //full = 90000
+    //poker = 100000
     private void calcularValor() {
         int valor = 0;
         
@@ -78,18 +87,17 @@ public class Mano {
         
         int descartes = this.descartar();//esta llamada modifica la mano
         
-        
         if (descartes == 0) {//full
-            valor += 400;
+            valor += 90000;
         } else if (descartes == 2) {//trio
-            valor += 300;
+            valor += 80000;
         } else if (descartes == 3) {//pareja
-            valor += 100;
+            valor += 60000;
         } else if (descartes == 1) {//poker o doblePareja
             if (this.isPoker()) {
-                valor += 500;
+                valor += 100000;
             } else {
-                valor += 200;
+                valor += 70000;
             }
         }
         

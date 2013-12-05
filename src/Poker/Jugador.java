@@ -19,7 +19,7 @@ public class Jugador {
         this.id = id;
         this.manosGanadas = 0;
         this.mano = new Mano();
-        this.descartadas = 0;
+        this.descartadas = 5;
         this.puntuacion = 0;
     }
 
