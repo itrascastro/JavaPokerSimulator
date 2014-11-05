@@ -104,7 +104,7 @@ public class Poker {
             }
             cadena += "\n";
         }
-        cadena +="]\n";
+        cadena += "]\n";
         cadena += "Descartes=";
         if (this.descartes) {
             cadena += "yes";
